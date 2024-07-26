@@ -331,3 +331,191 @@ print(f'{name:*<20}') # 좌로 정렬하고 나머지칸은 뱔표로
 print(f'{name:*>20}') # 우로 정렬하고 나머지칸은 별표로
 print(f'{name:*^20}') # 가운데로 정렬하고 나머지칸은 별표로
 ~~~
+
+## Condition
+### 조건문
+* 조건에 따라 특정한 동작을 하게 하는 명령어
+* 조건을 나타내는 기준과 실행해야 할 명령으로 구성됨
+* 조건의 참 거짓에 따라 실행해야 할 명령이 수행되거나 수행되지 않음
+* 파이썬에서는 if, else, elif 등의 예약어 사용
+
+### if-else문 문법
+~~~
+if <조건>:
+ <수행명령1-1>
+ <수행명령1-2>
+else:
+ <수행명령2-1>
+ 수행명령2-2>
+~~~
+1. if 뒤에는 참과 거짓을 판단할 수 있는 조건문이 와야 하고, 조건문이 끝나면 반드시 콜론(:)
+2. 들여쓰기를 사용하여 해당 조건이 참일 경우 수행할 명령 작성
+3. 조건 불일치 시 else문 실행(조건에 해당하지 않는 경우 처리해야 할 명령이 있다면)
+
+~~~
+print("Tell me your age?")
+myage = int(input())
+if myage < 30:
+ print("Welcome to the Club.")
+else:
+ print("Get out of here!!!")
+~~~
+
+### 조건 판단 방법
+* if 다음에 조건을 표기하여 참 또는 거짓 판단
+* 참/거짓의 구분을 위해 비교 연산자 활용
+
+비교연산자 | 비교상태 | 설명
+---|---|---
+x < y|~보다 작음|x가 y보다 작은지 검사
+x > y|~보다 큼|x가 y보다 큰지 검사
+x == y|같음|x가 y보다 같은지 검사
+x is y|같음|x가 y보다 같은지 검사(메모리주소)
+x!= y|같지 않음|x가 y보다 다른지 검사
+x is not y|같지 않음|x가 y보다 다른지 검사(메모리주소)
+x >= y|크거나 같음|x가 y보다 이상인지 검사
+x <= y|작거나 같음|x가 y보다 이하인지 검사
+
+~~~
+a = 5
+b = 5
+a == b
+# True
+
+a = 1050
+b = 1050
+a == b
+#True
+
+a = 10
+b = 10
+a = 1050
+b = 1050
+a is b
+# False (할당된 메모리 주소가 다르기 때문에)
+~~~
+* -5~256까지는 변하지 않는 메모리 주소에 값을 할당
+
+### 조건 참/거짓의 구분
+* 숫자형의 경우: 수학에서의 참/거짓과 동일
+* 컴퓨터는 존재하면 참,없으면 거짓이라고 판단
+~~~
+if 1:
+ print "True"
+else:
+ print "False"
+~~~
+
+### 논리 키워드 사용: and, or, not
+~~~
+a = 8, b = 5 일 때
+if a == 8 and b ==4 # False
+if a > 7 or b > 7 # True
+if not (a > 7) # False
+~~~
+
+### 삼항 연산자
+조건문을 사용하여 참일 경우와 거짓일 경우의 결과를 한 줄에 표현
+~~~
+value = 12
+is_even = True if value % 2 == 0 else False
+print(is_even)
+# True
+~~~
+
+### if-elif-else 문
+~~~
+score = int(input("Enter your score: "))
+
+if score >= 90: grade 'A'
+if score >= 80: grade 'B'
+if score >= 70: grade 'C'
+if score >= 60: grade 'D'
+else: grade = 'F'
+
+print(grade)
+~~~
+
+## loop
+### 반목문
+* 정해진 동작을 반복적으로 수행하게 하는 명령문
+* 반복 시작 조건, 종료 조건, 수행 명령으로 구성
+* 반복 구문은 들여쓰기와 block으로 구분
+
+### for-loop
+* 기본적인 반복문: 반복 범위를 지정하여 반복문 수행
+~~~
+for i in [1,2,3,4,5]:
+ print(i, "Hello")
+~~~
+* range() 사용
+* for 변수 in range(시작 번호, 마지막 번호, 증가값)
+~~~
+for i in range(0,5)
+ print("Hello")
+~~~
+* range()는 마지막 숫자 앞까지 리스트를 만들어줌
+* range(0,5) = [0,1,2,3,4] = range(5)는 같은 의미
+
+### 알아두면 상식
+* 반목문 변수명: 임시적인 반복 변수는 대부분 i,j,k
+* 0부터 시작하는 반복문
+* 무한 loop: 반복 명령이 끝나지 않는 프로그램 오류
+
+### for문의 다양한 반복문 조건 표현
+* 문자열을 한 자씩 리스트로 처리 - 시퀀스형 자료
+~~~
+for i in "abcdefg":
+ print(i)
+~~~
+* 각각의 문자열 리스트로 처리
+~~~
+for i in ["americano", "latte", "frafuchino"]:
+ print(i)
+~~~
+* 간격을 두고 세기
+~~~
+for i in range(1,10,2): # 1부터 10까지 2씩 증가시키면서 반복문 수행
+ print(i)
+~~~
+* 역순으로 반복문 수행
+~~~
+for i in range(10,1,-1): # 10부터 1까지 -1씩 감소시키면서 반복문 수행
+ print(i)
+~~~
+
+### while문
+* 조건이 만족하는 동안 반복 명령문 수행
+* for문은 while문으로 변환 가능
+~~~
+i = 1 # i 변수에 1 할당
+while i < 10: # i가 5가 되면 종료
+ print(i) # 조건을 만족할 때 i 출력
+ i +=1 # i에 1 더하는 것 반복하다가 10이 되면 반복 종료
+~~~
+
+### 반복의 제어 - break, continue
+#### break
+특정 조건에서 반복 종료
+~~~
+for i in range(10):
+ if i == 5: break #i가 5가 되면 반복 종료 
+ print(i)
+print("EOP")
+~~~
+#### continue
+특정 조건에서 남은 반복 명령 skip
+~~~
+for i in range(10):
+ if i == 5: continue #i가 5가 되면 i 출력하지 않음
+ print(i)
+print("EOP")
+~~~
+#### else
+반복 조건 만족하지 않을 경우 반복 종료 시 1회 수행
+~~~
+for i in range(10):
+ print(i,)
+else:
+ print("EOP")
+~~~
